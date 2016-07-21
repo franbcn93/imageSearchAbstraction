@@ -12,7 +12,6 @@ module.exports = function(app, db){
         
         var start = req.query.offset;
         
-        
         if(start){
             
             var url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + q + '&start=' + start;
@@ -65,7 +64,7 @@ module.exports = function(app, db){
                         
                     } else {
                         
-                        console.log('Inserted %d documents into the tinyurls collection. The documents inserted with "_id" are:', result.length, result);
+                        console.log('Inserted %d documents into the imagequeries collection. The documents inserted with "_id" are:', result.length, result);
                         
                     }
                     
