@@ -8,7 +8,7 @@ var app = express();
 require('dotenv').config({silent: true});
 var bodyParser = require('body-parser');
 var api = require('./api/search.js');
-//var routes = require('./routes/index.js');
+var routes = require('./routes/index.js');
 
 
 //Configuration for bodyParser
@@ -31,7 +31,7 @@ db.once('open', function(){
     api(app,db);
     //call api module with app and db as a parameter
     
-    //routes(app);
+    routes(app,db);
     //call routes module with app as a parameter
     
     app.listen(port,function(){

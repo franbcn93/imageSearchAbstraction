@@ -2,7 +2,7 @@
 
 module.exports = function(app, db){
     
-    console.log("using api!");
+    //console.log("using api!");
     
     var request = require('request');
     
@@ -10,10 +10,20 @@ module.exports = function(app, db){
         
         var q = req.params.query;
         
-        //console.log(q);
-        //res.send(q);
+        var start = req.query.offset;
         
-        var url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + q;
+        
+        if(start){
+            
+            var url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + q + '&start=' + start;
+            
+        } else {
+            
+            var url = 'https://www.googleapis.com/customsearch/v1' + '?key=' + process.env.CSE_API_Key + '&cx=' + process.env.CSE_ID + '&searchType=image' + '&q=' + q;
+            
+        }
+        
+    
     
         console.log(url);
     
