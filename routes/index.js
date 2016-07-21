@@ -2,6 +2,15 @@
 
 module.exports = function(app,db){
     
+    var path = process.cwd();
+    
+    app.get('/', function(req,res){
+        
+        res.sendFile(path + '/public/index.html');
+        
+    });
+
+
 
     app.get('/api/latest/imagesearch', function(req,res){
         
