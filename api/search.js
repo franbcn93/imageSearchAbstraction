@@ -33,6 +33,36 @@ module.exports = function(app, db){
                 throw(error);
                 
             } else {
+                
+                var d = new Date();
+                
+                var date = d.toJSON();
+                
+                var query = { 
+                    
+                    "term": q,
+                    "time": date
+                    
+                };
+                
+                var collection = db.collection('imagequeries');
+                
+                collection.insert(query, function(err,result){
+                    
+                    if(err){
+                        
+                        console.log(err);
+                        
+                    } else {
+                        
+                        console.log('Inserted %d documents into the tinyurls collection. The documents inserted with "_id" are:', result.length, result);
+                        
+                    }
+                    
+                    
+                }); //collection.insert 
+                
+                
             
                 var array = [ ];
             
